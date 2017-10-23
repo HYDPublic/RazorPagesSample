@@ -19,6 +19,7 @@
             <tr>
                 <th>@Html.DisplayNameFor(m => m.Customers[0].Id)</th>
                 <th>@Html.DisplayNameFor(m => m.Customers[0].Name)</th>
+                <th>@Html.DisplayNameFor(m => m.Customers[0].Phote)</th>
                 <th>&nbsp;</th>
             </tr>
         </thead>
@@ -28,14 +29,15 @@
             </tr>
             @foreach (var customer in Model.Customers)
             {
-                <tr>
-                    <td>@Html.DisplayFor(_ => customer.Id)</td>
-                    <td>@Html.DisplayFor(_ => customer.Name)</td>
-                    <td>
-                        <a asp-page="./Edit" asp-route-id="@customer.Id" class="btn btn-xs btn-primary">edit</a>
-                        <button type="submit" asp-page-handler="delete" asp-route-id="@customer.Id" class="btn btn-xs btn-danger">delete</button>
-                    </td>
-                </tr>
+            <tr>
+                <td>@Html.DisplayFor(_ => customer.Id)</td>
+                <td>@Html.DisplayFor(_ => customer.Name)</td>
+                <td><img src="~/Uploads/@customer.PhotePath" class="img-thumbnail" width="50" /></td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@customer.Id" class="btn btn-xs btn-primary">edit</a>
+                    <button type="submit" asp-page-handler="delete" asp-route-id="@customer.Id" class="btn btn-xs btn-danger">delete</button>
+                </td>
+            </tr>
             }
         </tbody>
     </table>
